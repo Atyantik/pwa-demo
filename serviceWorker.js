@@ -27,18 +27,18 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Cache only
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response;
-    })
-  );
-  // Network only
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return fetch(event.request);
-    })
-  );
+  // {/* Cache only */}
+  // event.respondWith(
+  //   caches.match(event.request).then((response) => {
+  //     return response;
+  //   })
+  // );
+  // // Network only
+  // event.respondWith(
+  //   caches.match(event.request).then((response) => {
+  //     return fetch(event.request);
+  //   })
+  // );
 
   // Cache first, falling back to network
   event.respondWith(
