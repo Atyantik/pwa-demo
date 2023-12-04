@@ -49,13 +49,14 @@ self.addEventListener('fetch', (event) => {
 });
 
 self.addEventListener('push', event => {
+  const payload = event.data.json();
   const options = {
-    body: event.data.json().title,
+    body: payload.body,
     icon: '/images/icon.jpg', // You can customize the notification icon
     vibrate: [200, 100, 200], // Vibration pattern
   };
 
   event.waitUntil(
-    self.registration.showNotification('Push Notification', options)
+    self.registration.showNotification(payload.title, options)
   );
 });
