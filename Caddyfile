@@ -1,0 +1,11 @@
+local.pwademo.com {
+  tls internal
+  reverse_proxy 127.0.0.1:8081
+}
+
+localhost {
+  tls internal
+  reverse_proxy localhost:3000
+}
+
+// admin 127.0.0.1:2020
