@@ -13,6 +13,7 @@ const assets = [
   "/images/coffee7.jpg",
   "/images/coffee8.jpg",
   "/images/coffee9.jpg",
+  "/images/icon-192.png",
 ];
 
 self.addEventListener('install', (event) => {
@@ -52,7 +53,7 @@ self.addEventListener('push', event => {
   const payload = event.data.json();
   const options = {
     body: payload.body,
-    icon: '/images/icon.jpg', // You can customize the notification icon
+    icon: '/images/icon-192.jpg', // You can customize the notification icon
     vibrate: [200, 100, 200], // Vibration pattern
   };
 
