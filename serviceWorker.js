@@ -1,6 +1,13 @@
+self.skipWaiting();
+
+const version = 1;
+
+const appCache = caches.open(`cahce_${version}`);
+
 const staticCoffees = 'coffees';
 const assets = [
   "/",
+  "/manifest.json",
   "/index.html",
   "/styles.css",
   "/app.js",
@@ -19,7 +26,7 @@ const assets = [
 self.addEventListener('install', (event) => {
   console.log('Install event', event);
   event.waitUntil(
-    caches.open(staticCoffees).then((cache) => cache.addAll(assets))
+    appCache.open(staticCoffees).then((cache) => cache.addAll(assets))
   );
 });
 
@@ -28,22 +35,23 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // {/* Cache only */}
+  {/* Cache only */}
   // event.respondWith(
-  //   caches.match(event.request).then((response) => {
+  //   appCache.match(event.request).then((response) => {
   //     return response;
   //   })
   // );
-  // // Network only
+
+  // Network only
   // event.respondWith(
-  //   caches.match(event.request).then((response) => {
+  //   appCache.match(event.request).then((response) => {
   //     return fetch(event.request);
   //   })
   // );
 
   // Cache first, falling back to network
   event.respondWith(
-    caches.match(event.request).then((response) => {
+    appCache.match(event.request).then((response) => {
       return response || fetch(event.request);
     })
   );

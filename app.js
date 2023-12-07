@@ -21,13 +21,13 @@ const showCoffes = () => {
   coffees.forEach(
     ({ name, image }) =>
       (output += `<div class="card">
-    <img class="card--avatar" src=${image} />
+    <img class="card--avatar" src=${image} height="200" width="200" loading="lazy" />
     <h1 class="card--title">${name}</h1>
     <a class="card--link" href="#">taste</a>
   </div>`)
   );
   container.innerHTML = output;
-};
+};  
 
 document.addEventListener('DOMContentLoaded', showCoffes);
 
@@ -36,6 +36,7 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
     navigator.serviceWorker
       .register('./serviceWorker.js')
       .then(async (registration) => {
+        registration.update();
         console.log('Service worker registered!!');
         const subscription = await registration.pushManager.subscribe({
           userVisibleOnly: true,
