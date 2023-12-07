@@ -5,15 +5,15 @@ const container = document.getElementById('container');
 const notify = document.getElementById('notify');
 
 const coffees = [
-  { name: 'Perspiciatis', image: 'images/coffee1.jpg' },
-  { name: 'Voluptatem', image: 'images/coffee2.jpg' },
-  { name: 'Explicabo', image: 'images/coffee3.jpg' },
-  { name: 'Rchitecto', image: 'images/coffee4.jpg' },
-  { name: 'Beatae', image: 'images/coffee5.jpg' },
-  { name: 'Vitae', image: 'images/coffee6.jpg' },
-  { name: 'Inventore', image: 'images/coffee7.jpg' },
-  { name: 'Veritatis', image: 'images/coffee8.jpg' },
-  { name: 'Accusantium', image: 'images/coffee9.jpg' },
+  { name: 'Perspiciatis', image: 'images/coffee-1.jpg' },
+  { name: 'Voluptatem', image: 'images/coffee-2.jpg' },
+  { name: 'Explicabo', image: 'images/coffee-3.jpg' },
+  { name: 'Rchitecto', image: 'images/coffee-4.jpg' },
+  { name: 'Beatae', image: 'images/coffee-5.jpg' },
+  { name: 'Vitae', image: 'images/coffee-6.jpg' },
+  { name: 'Inventore', image: 'images/coffee-7.jpg' },
+  { name: 'Veritatis', image: 'images/coffee-8.jpg' },
+  { name: 'Accusantium', image: 'images/coffee-9.jpg' },
 ];
 
 const showCoffes = () => {
@@ -21,7 +21,7 @@ const showCoffes = () => {
   coffees.forEach(
     ({ name, image }) =>
       (output += `<div class="card">
-    <img class="card--avatar" src=${image} height="200" width="200" loading="lazy" />
+    <img class="card--avatar" src=${image} alt=${name} height="200" width="200" loading="lazy" />
     <h1 class="card--title">${name}</h1>
     <a class="card--link" href="#">taste</a>
   </div>`)
