@@ -1,8 +1,8 @@
-self.skipWaiting();
+// self.skipWaiting();
 
-const version = 1;
+// const version = 1;
 
-const appCache = caches.open(`cahce_${version}`);
+// const appCache = caches.open(`cahce_${version}`);
 
 const staticCoffees = 'coffees';
 const assets = [
@@ -26,7 +26,8 @@ const assets = [
 self.addEventListener('install', (event) => {
   console.log('Install event', event);
   event.waitUntil(
-    appCache.open(staticCoffees).then((cache) => cache.addAll(assets))
+    caches.open(staticCoffees).then((cache) => cache.addAll(assets))
+    // staticCoffees.open(staticCoffees).then((cache) => cache.addAll(assets))
   );
 });
 
@@ -51,7 +52,7 @@ self.addEventListener('fetch', (event) => {
 
   // Cache first, falling back to network
   event.respondWith(
-    appCache.match(event.request).then((response) => {
+    caches.match(event.request).then((response) => {
       return response || fetch(event.request);
     })
   );

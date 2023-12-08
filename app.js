@@ -36,14 +36,13 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
     navigator.serviceWorker
       .register('./serviceWorker.js')
       .then(async (registration) => {
-        registration.update();
         console.log('Service worker registered!!');
         const subscription = await registration.pushManager.subscribe({
           userVisibleOnly: true,
           applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
         });
 
-        const respose = await fetch(
+        await fetch(
           'https://node-app-for-pwa.onrender.com/subscribe',
           {
             method: 'POST',
